@@ -34,6 +34,8 @@ read -p "Enter RAM value:" ram;
 
 echo "qemu-system-x86_64 -m ${ram} -netdev user,id=n1,hostfwd=tcp::${port}-:22 -device virtio-net,netdev=n1 -nographic -drive file=${name}.qcow2,format=qcow2" > ./${name}/${name}.sh
 
+chmod u+x ./${name}/${name}.sh;
+
 read -p "Start the VM boot?(y/n):" ans;
 if [[ $ans = "y" ]]
 then
