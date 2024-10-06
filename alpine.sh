@@ -1,4 +1,5 @@
-#!/data/data/com.termux/files/usr/bin/bash                                                                                           pkg update && pkg upgrade;                                                                                                           pkg install wget qemu-system-x86-64-headless qemu-utils;
+#!/data/data/com.termux/files/usr/bin/bash                                                                                           pkg update && pkg upgrade;
+pkg install wget qemu-system-x86-64-headless qemu-utils;
 pwd
 ls
 read -p "Enter name of VM:" name;
