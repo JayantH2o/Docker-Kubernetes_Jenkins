@@ -1,4 +1,5 @@
-#!/data/data/com.termux/files/usr/bin/bash                                                                                           pkg update && pkg upgrade;
+#!/data/data/com.termux/files/usr/bin/bash
+pkg update && pkg upgrade;
 pkg install wget qemu-system-x86-64-headless qemu-utils;
 pwd
 ls
@@ -7,7 +8,8 @@ if [ ! -d ./$name ]; then
         mkdir ./$name;
 else
         echo "Directory exists"
-fi                                                                                                                                   if [ ! -e ./${name}/${name}.qcow2 ];then
+fi
+if [ ! -e ./${name}/${name}.qcow2 ];then
 read -p "Disk Size of VM:" disksize;
 qemu-img create -f qcow2 ./${name}/${name}.qcow2 ${disksize}G;
 else
@@ -32,7 +34,8 @@ read -p "Enter RAM value:" ram;
 
 echo "qemu-system-x86_64 -m ${ram} -netdev user,id=n1,hostfwd=tcp::${port}-:22 -device virtio-net,netdev=n1 -nographic -drive file=${name}.qcow2,format=qcow2" > ./${name}/${name}.sh
 
-read -p "Start the VM boot?(y/n):" ans;                                                                                              if [[ $ans = "y" ]]
+read -p "Start the VM boot?(y/n):" ans;
+if [[ $ans = "y" ]]
 then
         qemu-system-x86_64 -m ${ram} -netdev user,id=n1,hostfwd=tcp::${port}-:22 -device virtio-net,netdev=n1 -cdrom ./${name}/${iso} -nographic -drive file=./${name}/${name}.qcow2,format=qcow2
 else
